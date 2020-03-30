@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bc02bf30-6b2f-4b33-a377-2e51a997f782" name="deeplearning" url="http://deeplearning-01.stat.lsa.umich.edu">
+        <fileTransfer host="deeplearning-01.stat.lsa.umich.edu" port="22" rootFolder="/home/guojp/gan" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
