@@ -1,7 +1,7 @@
 # GANs for sequences modeling
 Supervised by Prof. [Jonathan Terhorst](http://www-personal.umich.edu/~jonth/).
 
-This repository consists of work of writing an honor thesis. <br />The topic of this thesis is 
+This repository consists of work of writing an honor thesis. <br />The topic of this thesis is <br />
 Below is the details of progress:<br />
 -  We first try some toy examples by trainin a GANs to model a mixed exponential distribution. <br />
     The sequence looks like: 100\*exp(1), 1/100\*exp(1), 100\*exp(1), 1/100\*exp(1)<br />
