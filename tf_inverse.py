@@ -1,5 +1,5 @@
 def inverse(x, R_in):
-  ''' Require tensorflow '''
+  ''' Require tensorflow and numpy '''
   ''' Input: 
 
 	x: a real number
@@ -36,8 +36,8 @@ def inverse(x, R_in):
   pos = tf.reshape(pos,[]) # get only numerical value
 
   # change it to row vector
-  v = v.reshape([-1,]) 
-  w = w.reshape([-1,]) 
+  v = np.array(v.reshape([-1,]))
+  w = np.array(w.reshape([-1,]))
 
   index = tf.argsort(r_x)
 
