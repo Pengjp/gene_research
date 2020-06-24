@@ -2,16 +2,26 @@ def inverse(x, R_in):
   ''' Require tensorflow '''
   ''' Input: 
 
-  		x: a real number
-		R: a neuron netweek with one hidden layer and RELU activation 
+	x: a real number
+	R: a neuron netweek with one hidden layer and RELU activation 
 
-	  Return:
+       Return:
 
-	  It computes the inverst of R_in by regarding R_in as a piecewise linear continuous function
+	It computes the inverst of R_in by regarding R_in as a piecewise linear continuous function
+
+	Example of R_in (built in keras):
+	
+	R_in = keras.Sequential(
+    [
+        keras.Input(shape=(1,)),
+        layers.Dense(H, activation="relu", name="hidden"),
+        layers.Dense(1, activation=None, name="output"),
+    ]
+)
   '''
 
-  w, b = R.get_layer('hidden').get_weights()
-  v, v0 = R.get_layer('output').get_weights()
+  w, b = R_in.get_layer('hidden').get_weights()
+  v, v0 = R_in.get_layer('output').get_weights()
 
   b_over_w = - b / w # the negative sign is important
   b_over_w = b_over_w.reshape([-1,]) # change it to row vector
