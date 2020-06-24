@@ -41,8 +41,8 @@ def inverse(x, R_in):
 
   index = tf.argsort(r_x)
 
-  v_b = [v[i] * b[i] for i in index]
-  v_w = [v[i] * w[i] for i in index]
+  v_b = tf.gather(v * b, index)
+  v_w = tf.gather(v * w, index)
 
   num = x - v0 - tf.reduce_sum(v_b[:(pos - 1)])
   deo = tf.reduce_sum(v_w[:(pos - 1)])
