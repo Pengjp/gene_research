@@ -1,14 +1,11 @@
+@tf.function
 def inverse(x, R_in):
-  ''' Require tensorflow and numpy '''
+  ''' Require tensorflow '''
   ''' Input: 
-
 	x: a real number
 	R: a neuron netweek with one hidden layer and RELU activation 
-
        Return:
-
 	It computes the inverst of R_in by regarding R_in as a piecewise linear continuous function
-
 	Example of R_in (built in keras):
 	
 	R_in = keras.Sequential(
@@ -19,28 +16,32 @@ def inverse(x, R_in):
     ]
 )
   '''
-
-  w, b = R_in.get_layer('hidden').get_weights()
-  v, v0 = R_in.get_layer('output').get_weights()
+  x = tf.dtypes.cast(x, tf.float32) # make sure input data is float32
+  # It returns a tf.Variable
+  w, b = R_in.get_layer('hidden').weights
+  v, v0 = R_in.get_layer('output').weights
 
   b_over_w = - b / w # the negative sign is important
-  b_over_w = b_over_w.reshape([-1,]) # change it to row vector
+  b_over_w = tf.reshape(b_over_w, [-1])# change it to row vector
+	
   # Then we need to compute range for the inverse function
-  r_x = tf.convert_to_tensor(
-      np.array(([v0 + tf.nn.relu(w * i + b) @ v for i in b_over_w])).reshape([-1,])
+  r_x = tf.reshape(
+      [tf.matmul( ( tf.nn.relu(w * b_over_w[i] + b) ), v) + v0 for i in range(10)], 
+      [-1]
       )
+  r_x_sorted = tf.sort(tf.concat([[0], r_x, [np.inf]],0))	
+  # get the index of correct interval
+  
+  pos = tf.searchsorted(r_x_sorted, x,side='right') # get the interval index
 
-  # pad r_x with 0 and inf
-  # right side gives us the right index
-  pos = tf.searchsorted(tf.sort(tf.concat([[0], r_x, [np.inf]],0)), [x],side='right') # get the interval index
   pos = tf.reshape(pos,[]) # get only numerical value
-
   # change it to row vector
-  v = np.array(v.reshape([-1,]))
-  w = np.array(w.reshape([-1,]))
-
+  v = tf.reshape(v, [-1])
+  w = tf.reshape(w, [-1])
+  
   index = tf.argsort(r_x)
-
+  
+  # sort according to the index
   v_b = tf.gather(v * b, index)
   v_w = tf.gather(v * w, index)
 
