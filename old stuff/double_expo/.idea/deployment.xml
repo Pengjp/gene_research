@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="guojp@deeplearning-01.stat.lsa.umich.edu:22" createEmptyFolders="true" showNewOnTargetInSync="false">
+    <serverData>
+      <paths name="guojp@deeplearning-01.stat.lsa.umich.edu:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/guojp/gan/" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="jiapeng@67.203.8.27:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_629" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
