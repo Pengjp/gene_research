@@ -76,8 +76,8 @@ def gen_gaps(R_in, k: int,
         u = runif()
         z = rexp()
         u_x = tf.convert_to_tensor([[u * x]])
-        r_u_x = tf.dtypes.cast(R(u_x), dtype=tf.float64)
-        x = tf.dtypes.cast((inverse((z + r_u_x), R) ),dtype=tf.float64 )[0]  # segment height
+        r_u_x = tf.dtypes.cast(R_in(u_x), dtype=tf.float64)
+        x = tf.dtypes.cast((inverse((z + r_u_x), R_in) ),dtype=tf.float64 )[0]  # segment height
         with tf.control_dependencies(
             [tf.debugging.assert_positive(x)]
         ):
