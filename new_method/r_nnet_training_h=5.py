@@ -396,12 +396,12 @@ def training(epoches):
       # plt.plot(range(len(d_loss)),d_loss)
 
 # Commented out IPython magic to ensure Python compatibility.
-# %%time
-# mse = []
-# EPOCHES = 500
-# training(EPOCHES)
+%%time
+mse = []
+EPOCHES = 700
+training(EPOCHES)
 
 generator.weights
 
 plt.plot(range(len(mse)),mse)
-
+plt.savefig('books_read.png')
